@@ -26,7 +26,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->dirroot.'/user/profile/field/text/field.class.php');
 
 /**
  * Class profile_field_text_access
@@ -35,7 +34,11 @@ require_once($CFG->dirroot.'/user/profile/field/text/field.class.php');
  * @copyright  2019 Oakland University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class profile_field_akindiid extends profile_field_text {
+class profile_field_akindiid extends profile_field_base {
+
+    public function edit_field_add($mform) {
+        return true;
+    }
 
     public function is_visible() {
         global $USER, $PAGE;
