@@ -1,0 +1,1 @@
+A basic user profile field plugin that extends the normal text field and only allows users to see it who have the profilefield/textaccess:view permission.
