@@ -17,14 +17,14 @@
 /**
  * Capabilities.
  *
- * @package    profilefield_textaccess
+ * @package    profilefield_akindiid
  * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2017 Oakland University
+ * @copyright  2019 Oakland University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $capabilities = array(
-    'profilefield/textaccess:view' => array(
+    'profilefield/akindiid:view' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_COURSE
     )

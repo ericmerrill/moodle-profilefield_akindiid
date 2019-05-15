@@ -15,12 +15,13 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'profilefield_textaccess', language 'en'.
+ * Strings for component 'profilefield_akindiid', language 'en'.
  *
- * @package   profilefield_textaccess
- * @copyright 1999 onwards Martin Dougiamas  {@link http://moodle.com}
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    profilefield_akindiid
+ * @author     Eric Merrill <merrill@oakland.edu>
+ * @copyright  2019 Oakland University
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Text input w/Access';
+$string['pluginname'] = 'Akindi Unique ID';
 $string['textaccess:view'] = 'View Profile Field';

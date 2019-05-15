@@ -17,9 +17,9 @@
 /**
  * Text profile field with access restrictions.
  *
- * @package    profilefield_textaccess
+ * @package    profilefield_akindiid
  * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2017 Oakland University
+ * @copyright  2019 Oakland University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -32,10 +32,10 @@ require_once($CFG->dirroot.'/user/profile/field/text/field.class.php');
  * Class profile_field_text_access
  *
  * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2017 Oakland University
+ * @copyright  2019 Oakland University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class profile_field_textaccess extends profile_field_text {
+class profile_field_akindiid extends profile_field_text {
 
     public function is_visible() {
         global $USER, $PAGE;
@@ -43,7 +43,7 @@ class profile_field_textaccess extends profile_field_text {
         $context = $PAGE->context;
 
         // We only show the field to people with this capability.
-        return has_capability('profilefield/textaccess:view', $context);
+        return has_capability('profilefield/akindiid:view', $context);
     }
 
 }

@@ -17,9 +17,9 @@
 /**
  * Text profile field definition.
  *
- * @package    profilefield_textaccess
+ * @package    profilefield_akindiid
  * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2017 Oakland University
+ * @copyright  2019 Oakland University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,13 +29,13 @@ global $CFG;
 require_once($CFG->dirroot.'/user/profile/field/text/define.class.php');
 
 /**
- * Class profile_define_textaccess
+ * Class profile_define_akindiid
  *
  * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2017 Oakland University
+ * @copyright  2019 Oakland University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class profile_define_textaccess extends profile_define_text {
+class profile_define_akindiid extends profile_define_text {
 
 
 }

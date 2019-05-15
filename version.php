@@ -17,14 +17,14 @@
 /**
  * Text profile field version information.
  *
- * @package    profilefield_textaccess
+ * @package    profilefield_akindiid
  * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2017 Oakland University
+ * @copyright  2019 Oakland University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017072002;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2019051500;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2016112900;        // Requires this Moodle version
-$plugin->component = 'profilefield_textaccess'; // Full name of the plugin (used for diagnostics)
+$plugin->component = 'profilefield_akindiid'; // Full name of the plugin (used for diagnostics)

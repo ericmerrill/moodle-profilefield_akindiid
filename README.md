@@ -1,1 +1,1 @@
-A basic user profile field plugin that extends the normal text field and only allows users to see it who have the profilefield/textaccess:view permission.
+A basic user profile adds a special profile field for the Akdini ID, and only allows users to see it who have the profilefield/akindiid:view permission.
