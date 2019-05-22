@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the login plugin for Moodle
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,31 +15,31 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Text profile field definition.
+ * Observers to register.
  *
  * @package    profilefield_akindiid
- * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2019 Oakland University
+ * @author     Eric Merrill (merrill@oakland.edu)
+ * @copyright  2019 Oakland University (https://www.oakland.edu)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-global $CFG;
-require_once($CFG->dirroot.'/user/profile/field/text/define.class.php');
-
-/**
- * Class profile_define_akindiid
- *
- * @author     Eric Merrill <merrill@oakland.edu>
- * @copyright  2019 Oakland University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-class profile_define_akindiid extends profile_define_base {
-    public function define_form_specific($form) {
-
-        $form->addElement('hidden', 'defaultdata', '0');
-        $form->setType('defaultdata', PARAM_INT);
-    }
-
-}
+$observers = array(
+    // Detect course restore events.
+    [
+        'eventname' => '\core\event\user_created',
+        'callback' => '\profilefield_akindiid\observer::update_user',
+        'internal' => false
+    ],
+    [
+        'eventname' => '\core\event\user_updated',
+        'callback' => '\profilefield_akindiid\observer::update_user',
+        'internal' => false
+    ],
+    [
+        'eventname' => '\core\event\user_info_field_created',
+        'callback' => '\profilefield_akindiid\observer::field_created',
+        'internal' => false
+    ]
+);

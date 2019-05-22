@@ -37,16 +37,53 @@ global $CFG;
 class profile_field_akindiid extends profile_field_base {
 
     public function edit_field_add($mform) {
+
+        $fieldtype = 'static';
+
+        // Create the form field.
+        $mform->addElement($fieldtype, $this->inputname, format_string($this->field->name));
+        $mform->setType($this->inputname, PARAM_TEXT);
+        //$mform->setValue($this->inputname, "Adsa");
+
+
         return true;
     }
 
     public function is_visible() {
         global $USER, $PAGE;
 
+        $view = parent::is_visible();
+
+        if ($view) {
+            return true;
+        }
+
         $context = $PAGE->context;
 
         // We only show the field to people with this capability.
         return has_capability('profilefield/akindiid:view', $context);
+    }
+
+    public function display_data() {
+        // Default formatting.
+        $data = parent::display_data();
+
+        if (empty($data)) {
+            return false;
+        }
+
+        $format = 'A%u%u%u-%u%u%u';
+
+        $values = str_split($data);
+
+
+        $result = vsprintf($format, $values);
+
+        return $result;
+    }
+
+    public function get_field_properties() {
+        return array(PARAM_TEXT, NULL_NOT_ALLOWED);
     }
 
 }

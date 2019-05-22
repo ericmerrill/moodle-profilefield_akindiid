@@ -24,4 +24,4 @@
  */
 
 $string['pluginname'] = 'Akindi Unique ID';
-$string['textaccess:view'] = 'View Profile Field';
+$string['akindiid:view'] = 'View Akindi ID Field';
