@@ -51,9 +51,17 @@ class helper {
 
         $usercount = $DB->count_records('user');
 
+        $lock = lock_factory::get_lock('idcreation');
+
+        if (empty($lock)) {
+            debugging("Could not get the idcreation lock. Exiting.", DEBUG_DEVELOPER);
+
+            return;
+        }
+
         // We are going to use a progress bar if there are lots of users.
         // Will throw a NO_OUTPUT_BUFFERING error, but I don't think there is anything that can be done.
-        if ($usercount > 100000) {
+        if ($usercount > 10000) {
             $progress = new \core\progress\display(true);
         } else {
             $progress = new \core\progress\none();
@@ -65,7 +73,7 @@ class helper {
 
 	    $count = 0;
         foreach ($users as $user) {
-            self::set_user_value($user->id);
+            self::set_user_value($user->id, true);
             $count++;
             $progress->progress($count);
         }
@@ -73,9 +81,12 @@ class helper {
         $progress->end_progress();
         $users->close();
 
+        if ($lock) {
+            $lock->release();
+        }
     }
 
-    public static function set_user_value($userid) {
+    public static function set_user_value($userid, $locked = false) {
         global $DB;
 
         $fieldid = self::get_field_id();
@@ -88,13 +99,14 @@ class helper {
             return false;
         }
 
-        // TODO - locks.
-        $lock = lock_factory::get_lock('idcreation');
+        if (!$locked) {
+            $lock = lock_factory::get_lock('idcreation');
 
-        if (empty($lock)) {
-            debugging("Could not get the idcreation lock. Exiting.", DEBUG_DEVELOPER);
+            if (empty($lock)) {
+                debugging("Could not get the idcreation lock. Exiting.", DEBUG_DEVELOPER);
 
-            return;
+                return;
+            }
         }
 
         $random = self::generate_unique_id($fieldid);
