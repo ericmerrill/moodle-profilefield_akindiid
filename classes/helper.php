@@ -49,7 +49,7 @@ class helper {
             self::$fieldid = $fieldid;
         }
 
-        $usercount = $DB->count_records('user');
+        $usercount = $DB->count_records('user', ['deleted' => 0]);
 
         $lock = lock_factory::get_lock('idcreation');
 
@@ -67,7 +67,7 @@ class helper {
             $progress = new \core\progress\none();
         }
 
-        $users = $DB->get_recordset('user', null, '', 'id');
+        $users = $DB->get_recordset('user', ['deleted' => 0], '', 'id');
 
         $progress->start_progress('populate_users', $usercount);
 
