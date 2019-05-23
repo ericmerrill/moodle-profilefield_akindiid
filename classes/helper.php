@@ -61,7 +61,7 @@ class helper {
 
         // We are going to use a progress bar if there are lots of users.
         // Will throw a NO_OUTPUT_BUFFERING error, but I don't think there is anything that can be done.
-        if ($usercount > 10000) {
+        if ($usercount > 50000) {
             $progress = new \core\progress\display(true);
         } else {
             $progress = new \core\progress\none();
@@ -99,6 +99,7 @@ class helper {
             return false;
         }
 
+        $lock = false;
         if (!$locked) {
             $lock = lock_factory::get_lock('idcreation');
 
