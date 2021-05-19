@@ -61,13 +61,16 @@ class observer {
     }
 
     public static function field_created($event) {
-        global $DB;
-
         // Observers should never throw exceptions, so we are going to wrap a generic catch.
         try {
             $fieldid = $event->objectid;
 
             if (!empty($fieldid)) {
+                $field = $event->get_record_snapshot('user_info_field', $fieldid);
+                if ($field->datatype !== 'akindiid') {
+                    // This isn't a field of our type...
+                    return;
+                }
                 helper::populate_all_users($fieldid);
             }
 
